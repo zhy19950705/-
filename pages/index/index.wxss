@@ -1,8 +1,9 @@
 /**index.wxss**/
-.userinfo {
+.title {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 100rpx
 }
 
 .userinfo-avatar {

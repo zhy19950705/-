@@ -1,0 +1,5 @@
+function toNumber(n) {
+  return parseInt(n)
+}
+
+module.exports.toNumber = toNumber

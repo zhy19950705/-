@@ -3,52 +3,33 @@
 const app = getApp()
 
 Page({
-  data: {
-    motto: '小晗晗的弟弟',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+  data:{
+    message:'start',
+    lifeStyle:[{
+      name:'我儿子小成成点一下',
+      detail:'你爸爸叫你吃鸡',
+      info:'吃不吃啊'
+      
+    },
+    ]
   },
-  //事件处理函数
-  bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
+  onLoad(){
+    this.setData({
+      message:'hello world'
     })
   },
-  onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+  indexDetail(e){
+    const {info,detail}=e.currentTarget.dataset;
+    wx.showModal({
+      title: detail,
+      content: info,
+      showCancel:false
+    })
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+  gotoUrl(){
+    let url='../test/test'
+    wx.navigateTo({
+      url
     })
   }
 })
