@@ -1,0 +1,20 @@
+module.exports = {
+    humidity: function (h) {
+        if (!!h) {
+            return '湿度' + h + '%'
+        }
+        return h
+    },
+    wind: function (code, level) {
+        console.log(code,level)
+        if (!code) {
+            return '无风'
+        }
+        if (!!level) {
+            level = level.toString().split('-');
+            level = level[level.length - 1];
+            return code + '' + level + '级'
+        }
+        return code
+    }
+}
